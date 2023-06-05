@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerControler : MonoBehaviour
+public class PlayerControler : Singleton<PlayerControler>
 {
     [SerializeField] private float _forwardSpeed = 10f;
     [SerializeField] private float _horizontalSpeed = 0.03f;
@@ -25,7 +25,14 @@ public class PlayerControler : MonoBehaviour
         float newPosition = transform.position.x + horizontalInput.Get<float>() * _horizontalSpeed * Time.deltaTime;
         newPosition = Mathf.Clamp(newPosition, -_xRange, _xRange);
         transform.position = new Vector3(newPosition, transform.position.y, transform.position.z);  
-        //transform.Translate(newPosition * _horizontalSpeed * Vector3.right);
+    }
+
+    public void IncreaseStack(GameObject cube)
+    {
+        transform.Translate(Vector3.up);
+        cube.transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
+        cube.transform.SetParent(transform);
+        cube.tag = "InStack";
     }
 
 }
