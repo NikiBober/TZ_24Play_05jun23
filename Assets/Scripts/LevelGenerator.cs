@@ -1,24 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerator : Singleton<LevelGenerator>
 {
     [SerializeField] GameObject _trackGroundPrefab;
-    [SerializeField] private int _trackLenght = 30;
-    [SerializeField] Transform _initialTrackPosition;
     [SerializeField] GameObject _cubeWallPrefab;
     [SerializeField] GameObject _cubePickupPrefab;
-
+    [SerializeField] Transform _initialTrackPosition;
+    [SerializeField] private int _trackLenght = 30;
     [SerializeField] private int _maxWallHeight = 5;
-    [SerializeField] private float _initialColumnPosition = -2f;
-    [SerializeField] private float _cubeSize = 1f;
     [SerializeField] private float _wallPosition = 25f;
     [SerializeField] private float _initialRowPosition = 0.5f;
-
+    [SerializeField] private float _initialColumnPosition = -2f;
+    [SerializeField] private float _cubeSize = 1f;
     [SerializeField] private Vector2 _pickupsAreaX;
     [SerializeField] private Vector2 _pickupsOffsetAreaZ;
-
 
     private Vector3 _trackPosition;
     private Vector3 _offset;
@@ -34,7 +29,6 @@ public class LevelGenerator : Singleton<LevelGenerator>
     public void GenerateNewTrack()
     {
         _trackPosition += _offset;
-
         Instantiate(_trackGroundPrefab, _trackPosition, Quaternion.identity);
         _wallPosition += _trackLenght;
         GenerateWall();
@@ -54,10 +48,10 @@ public class LevelGenerator : Singleton<LevelGenerator>
     {
         float columnPosition = _initialColumnPosition + _cubeSize * columnIndex;
         int rows = Random.Range(0, _maxWallHeight);
+
         for (int i = 0; i < rows; i++)
         {
             float rowPosition = _initialRowPosition + _cubeSize * i;
-
             Vector3 position = new Vector3(columnPosition, rowPosition, _wallPosition);
             Instantiate(_cubeWallPrefab, position, Quaternion.identity);
         }
@@ -75,11 +69,8 @@ public class LevelGenerator : Singleton<LevelGenerator>
         for (int i = 0; i < _wallHeight; i++)
         {
             positionZ += Random.Range(_pickupsOffsetAreaZ.x, _pickupsOffsetAreaZ.y);
-
             Vector3 position = new Vector3(Random.Range(_pickupsAreaX.x, _pickupsAreaX.y), _initialRowPosition, positionZ);
             Instantiate(_cubePickupPrefab, position, Quaternion.identity);
-            Debug.Log(positionZ);
         }
     }
-
 }
