@@ -6,7 +6,15 @@ public class CubeController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Pickup"))
         {
-            PlayerControler.Instance.IncreaseStack(collision.gameObject);
+            StackController.Instance.IncreaseStack(collision.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            transform.SetParent(null);
         }
     }
 }

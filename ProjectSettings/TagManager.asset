@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pickup
   - InStack
+  - Wall
   layers:
   - Default
   - TransparentFX
