@@ -6,7 +6,7 @@ public class GameOverDetector : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("GameOver");
+            GameManager.Instance.GameOver();
         }
     }
 }
