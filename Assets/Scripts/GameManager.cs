@@ -1,12 +1,15 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] PlayerMovement _playerMovement;
-    [SerializeField] PlayerInput _playerInput;
-    [SerializeField] GameObject _gameOverScreen;
+    [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private GameObject _gameOverScreen;
+    [SerializeField] private CameraController _camera;
+
 
     public void GameOver()
     {
@@ -19,4 +22,22 @@ public class GameManager : Singleton<GameManager>
     {
         SceneManager.LoadScene(0);
     }
+
+    public void CollisionEffects()
+    {
+        ShakeCamera();
+        VibrateDevice();
+    }
+
+    private void ShakeCamera()
+    {
+        _camera.Shake();
+    }
+
+    private void VibrateDevice()
+    {
+        //not sure about this code, cause haven`t physical device to test
+        Handheld.Vibrate();
+    }
+
 }

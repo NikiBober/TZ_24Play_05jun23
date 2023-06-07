@@ -15,6 +15,7 @@ public class CubeController : MonoBehaviour
         if (other.gameObject.CompareTag("Wall"))
         {
             transform.SetParent(null);
+            GameManager.Instance.CollisionEffects();
         }
     }
 }
