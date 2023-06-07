@@ -19,7 +19,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
     private Vector3 _offset;
     private int _wallHeight;
 
-    void Start()
+    private void Start()
     {
         _trackPosition = _initialTrackPosition.position;
         _offset = Vector3.forward * _trackLenght;

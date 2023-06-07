@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TrailFollow : MonoBehaviour
 {
-    [SerializeField] Transform _transformToFollow;
+    [SerializeField] private Transform _transformToFollow;
+    [SerializeField] private float _elevation = 0.01f;
 
-
-    // Update is called once per frame
-    void LateUpdate()
+    private void LateUpdate()
     {
-        transform.position = new Vector3(_transformToFollow.position.x, 0.01f, _transformToFollow.position.z); 
+        transform.position = new Vector3(_transformToFollow.position.x, _elevation, _transformToFollow.position.z); 
     }
 }

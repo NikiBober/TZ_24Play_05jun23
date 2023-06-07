@@ -9,12 +9,12 @@ public class CameraController : MonoBehaviour
 
     float _elapsedTime = 1f;
 
-    void Start()
+    private void Start()
     {
         _offset = transform.position - _transformToFollow.position;
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         transform.position = Vector3.Lerp(transform.position, new Vector3(0f, _transformToFollow.position.y, _transformToFollow.position.z) + _offset, Time.deltaTime);
 

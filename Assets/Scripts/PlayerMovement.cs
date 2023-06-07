@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _horizontalSpeed = 0.03f;
     [SerializeField] private float _xRange = 2f;
 
-    void Update()
+     private void Update()
     {
         transform.Translate(_forwardSpeed * Time.deltaTime * Vector3.forward);
     }
