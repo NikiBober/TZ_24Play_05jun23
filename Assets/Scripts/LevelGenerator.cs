@@ -72,5 +72,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
             Vector3 position = new Vector3(Random.Range(_pickupsAreaX.x, _pickupsAreaX.y), _initialRowPosition, positionZ);
             Instantiate(_cubePickupPrefab, position, Quaternion.identity);
         }
+
+        _wallHeight = 0;
     }
 }
